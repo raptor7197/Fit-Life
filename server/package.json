@@ -1,0 +1,51 @@
+{
+  "name": "fitlife-app-backend",
+  "version": "1.0.0",
+  "description": "Gym Buddy backend with Express + MongoDB + Gemini AI integration",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --coverage --forceExit",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/",
+    "seed": "node scripts/seed.js"
+  },
+  "keywords": [
+    "fitness",
+    "gym",
+    "workout",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^7.0.0",
+    "joi": "^17.10.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.5",
+    "rate-limit-redis": "^4.2.2",
+    "redis": "^5.8.2",
+    "uuid": "^9.0.1",
+    "validator": "^13.15.15",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.0.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}

@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# FitLife - Fitness Landing Page & Onboarding App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive fitness landing page built with React and Tailwind CSS featuring animated hero sections, testimonials, and a comprehensive onboarding flow.
 
-## Available Scripts
+## 🌟 Features
 
-In the project directory, you can run:
+### Landing Page
+- **Floating Navbar** - Modern glassmorphism design with smooth scroll animations
+- **Animated Hero Section** - Image carousel showcasing different training styles
+- **Benefits Section** - Interactive cards with hover animations and scroll-triggered effects
+- **Testimonials Carousel** - Auto-rotating success stories with user reviews
+- **Company Footer** - Complete contact information and company details
+
+### Onboarding System
+- **4-Step Form Flow** - Progressive data collection with validation
+- **Personal Information** - Name and email collection
+- **Goal Selection** - Weight loss, muscle gain, endurance, general fitness
+- **Activity Level Assessment** - Beginner to athlete level classification
+- **Additional Details** - Age range and experience tracking
+
+### Design & UX
+- **Modern Color Palette** - Custom brand colors (#666A86, #788AA3, #92B6B1, #B2C9AB, #E8DDB5)
+- **Poppins Typography** - Clean, professional font throughout
+- **Smooth Animations** - CSS animations and transitions for enhanced UX
+- **Fully Responsive** - Mobile-first design with hamburger menu
+- **Accessibility** - Proper ARIA labels and keyboard navigation
+
+## 🚀 Technologies Used
+
+- **React 18** with TypeScript
+- **Tailwind CSS 3.3** for styling
+- **Heroicons** for consistent iconography
+- **Unsplash Images** for high-quality training photos
+- **PostCSS & Autoprefixer** for cross-browser compatibility
+
+## 🛠️ Quick Start
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
 
 ### `npm run build`
+Builds the app for production with optimized performance
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive watch mode
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📱 Components Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Core Components
+- **`Navbar`** - Floating navigation with mobile hamburger menu
+- **`Hero`** - Animated carousel with training images and CTA buttons
+- **`Benefits`** - Feature grid with animation triggers
+- **`Testimonials`** - Rotating customer success stories
+- **`OnboardingModal`** - Multi-step form with progress tracking
+- **`Footer`** - Company information and contact details
 
-### `npm run eject`
+### Key Features
+- **Image Carousel** - Auto-advancing slides with manual navigation
+- **Form Validation** - Real-time validation with error messages
+- **Scroll Animations** - Intersection Observer for animation triggers
+- **Mobile Responsive** - Breakpoint-based design system
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🎨 Design System
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Colors
+```css
+--primary-dark: #666A86    /* Headers, primary text */
+--primary-medium: #788AA3  /* Secondary text, links */
+--primary-light: #92B6B1   /* Buttons, accents */
+--secondary-light: #B2C9AB /* Supporting elements */
+--accent-light: #E8DDB5    /* Background highlights */
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Animations
+- **fadeInUp**: Slide up with opacity transition
+- **slideLeft**: Horizontal slide entrance  
+- **scaleIn**: Scale animation for emphasis
+- **float**: Continuous floating motion
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📞 Contact Information
 
-## Learn More
+**FitLife Fitness Center**
+- **Address**: 123 Fitness Street, Health District, NY 10001
+- **Phone**: +1 (555) 123-4567
+- **Email**: support@fitlife.com
+- **Hours**: Mon-Fri 5AM-11PM, Sat-Sun 6AM-10PM
+- **Online**: 24/7 Available
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🏆 Success Metrics
+- **10,000+** Happy Members
+- **98%** Success Rate
+- **4.9/5** Average Rating
+- **2M+** Workouts Completed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+**Transform your fitness journey with FitLife! 💪**
