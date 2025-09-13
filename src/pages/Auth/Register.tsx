@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -59,80 +60,92 @@ const Register = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Register</h1>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-2xl font-bold mb-4">Register</motion.h1>
       {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit}>
+            <motion.form
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700">Name</label>
+          <label className="block text-darkText">Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Email</label>
+          <label className="block text-darkText">Email</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Password</label>
+          <label className="block text-darkText">Password</label>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Age</label>
+          <label className="block text-darkText">Age</label>
           <input
             type="number"
             name="age"
             value={formData.age}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Height (cm)</label>
+          <label className="block text-darkText">Height (cm)</label>
           <input
             type="number"
             name="height"
             value={formData.height}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Weight (kg)</label>
+          <label className="block text-darkText">Weight (kg)</label>
           <input
             type="number"
             name="weight"
             value={formData.weight}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Fitness Level</label>
+          <label className="block text-darkText">Fitness Level</label>
           <select
             name="fitnessLevel"
             value={formData.fitnessLevel}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           >
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
@@ -141,13 +154,13 @@ const Register = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Fitness Goals</label>
+          <label className="block text-darkText">Fitness Goals</label>
           <select
             multiple
             name="fitnessGoals"
             value={formData.fitnessGoals}
             onChange={handleMultiSelectChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           >
             <option value="weight-loss">Weight Loss</option>
             <option value="muscle-gain">Muscle Gain</option>
@@ -158,13 +171,13 @@ const Register = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Preferred Workout Types</label>
+          <label className="block text-darkText">Preferred Workout Types</label>
           <select
             multiple
             name="preferredWorkoutTypes"
             value={formData.preferredWorkoutTypes}
             onChange={handleMultiSelectChange}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-secondary rounded"
           >
             <option value="cardio">Cardio</option>
             <option value="strength">Strength</option>
@@ -176,11 +189,11 @@ const Register = () => {
             <option value="cycling">Cycling</option>
           </select>
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button type="submit" className="bg-primary text-white p-2 rounded">
           Register
         </button>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 

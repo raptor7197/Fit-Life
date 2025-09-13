@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { motion } from 'framer-motion';
 
 const UserStats = () => {
   const [stats, setStats] = useState<any>(null);
@@ -31,36 +32,49 @@ const UserStats = () => {
   }, [days]);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">User Statistics</h1>
-      <div className="mb-4">
-        <label>Select Period:</label>
-        <select value={days} onChange={(e) => setDays(Number(e.target.value))}>
-          <option value={7}>Last 7 days</option>
-          <option value={30}>Last 30 days</option>
-          <option value={90}>Last 90 days</option>
-        </select>
-      </div>
-      {error && <p className="text-red-500">{error}</p>}
-      {stats ? (
-        <div>
-          <h2 className="text-xl font-bold mt-4">Overview</h2>
-          <p><strong>Total Workouts:</strong> {stats.overview.totalWorkouts}</p>
-          <p><strong>Current Streak:</strong> {stats.overview.currentStreak}</p>
-          <p><strong>Goals Completed:</strong> {stats.overview.goalsCompleted}</p>
-
-          <h2 className="text-xl font-bold mt-4">Recent Workouts</h2>
-          <p><strong>Total Workouts:</strong> {stats.recent.workouts.totalWorkouts}</p>
-          <p><strong>Total Minutes:</strong> {stats.recent.workouts.totalMinutes}</p>
-
-          <h2 className="text-xl font-bold mt-4">Recent Goals</h2>
-          <p><strong>Completed Goals:</strong> {stats.recent.goals.completedGoals}</p>
-          <p><strong>Completion Rate:</strong> {stats.recent.goals.completionRate}%</p>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-2xl font-bold mb-4">User Statistics</motion.h1>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}>
+        <div className="mb-4">
+          <label>Select Period:</label>
+          <select value={days} onChange={(e) => setDays(Number(e.target.value))}>
+            <option value={7}>Last 7 days</option>
+            <option value={30}>Last 30 days</option>
+            <option value={90}>Last 90 days</option>
+          </select>
         </div>
-      ) : (
-        <p>Loading stats...</p>
-      )}
-    </div>
+        {error && <p className="text-red-500">{error}</p>}
+        {stats ? (
+          <div>
+            <h2 className="text-xl font-bold mt-4">Overview</h2>
+            <p><strong>Total Workouts:</strong> {stats.overview.totalWorkouts}</p>
+            <p><strong>Current Streak:</strong> {stats.overview.currentStreak}</p>
+            <p><strong>Goals Completed:</strong> {stats.overview.goalsCompleted}</p>
+
+            <h2 className="text-xl font-bold mt-4">Recent Workouts</h2>
+            <p><strong>Total Workouts:</strong> {stats.recent.workouts.totalWorkouts}</p>
+            <p><strong>Total Minutes:</strong> {stats.recent.workouts.totalMinutes}</p>
+
+            <h2 className="text-xl font-bold mt-4">Recent Goals</h2>
+            <p><strong>Completed Goals:</strong> {stats.recent.goals.completedGoals}</p>
+            <p><strong>Completion Rate:</strong> {stats.recent.goals.completionRate}%</p>
+          </div>
+        ) : (
+          <p>Loading stats...</p>
+        )}
+      </motion.div>
+    </motion.div>
   );
 };
 

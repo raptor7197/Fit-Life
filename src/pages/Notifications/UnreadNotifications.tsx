@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const UnreadNotifications = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -26,18 +28,39 @@ const UnreadNotifications = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Unread Notifications</h1>
-      {error && <p className="text-red-500">{error}</p>}
-      <div>
-        {notifications.map((notification) => (
-          <div key={notification._id} className="p-4 border border-blue-500 rounded mb-4">
-            <p>{notification.message}</p>
-            <p className="text-sm text-gray-500">{new Date(notification.createdAt).toLocaleString()}</p>
-          </div>
-        ))}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <div className="flex justify-between items-center mb-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-2xl font-bold">Unread Notifications</motion.h1>
+        <Link to="/notifications" className="bg-primary text-white p-2 rounded">
+          View All
+        </Link>
       </div>
-    </div>
+      {error && <p className="text-red-500">{error}</p>}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}>
+        {notifications.map((notification, index) => (
+          <motion.div
+            key={notification._id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+            className="p-4 border border-primary rounded mb-4">
+            <p>{notification.message}</p>
+            <p className="text-sm text-darkText">{new Date(notification.createdAt).toLocaleString()}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
   );
 };
 

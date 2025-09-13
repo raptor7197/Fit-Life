@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const CreateWorkout = () => {
   const [formData, setFormData] = useState({
@@ -35,37 +36,50 @@ const CreateWorkout = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Create Workout</h1>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-2xl font-bold mb-4">Create Workout</motion.h1>
       {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <motion.form
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        onSubmit={handleSubmit}
+        className="bg-white rounded-lg shadow-lg px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Title</label>
+          <label className="block text-darkText text-sm font-bold mb-2">Title</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Description</label>
+          <label className="block text-darkText text-sm font-bold mb-2">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Type</label>
+          <label className="block text-darkText text-sm font-bold mb-2">Type</label>
           <select
             name="type"
             value={formData.type}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
           >
             <option value="cardio">Cardio</option>
             <option value="strength">Strength</option>
@@ -82,34 +96,34 @@ const CreateWorkout = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Duration (minutes)</label>
+          <label className="block text-darkText text-sm font-bold mb-2">Duration (minutes)</label>
           <input
             type="number"
             name="durationMinutes"
             value={formData.durationMinutes}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
             required
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Intensity</label>
+          <label className="block text-darkText text-sm font-bold mb-2">Intensity</label>
           <select
             name="intensity"
             value={formData.intensity}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
         </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <button type="submit" className="bg-primary hover:bg-darkText text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
           Create Workout
         </button>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 

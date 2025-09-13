@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { motion } from 'framer-motion';
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -72,29 +73,37 @@ const Notifications = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Notifications</h1>
-        <button onClick={handleMarkAllAsRead} className="bg-blue-500 text-white p-2 rounded">
+        <button onClick={handleMarkAllAsRead} className="bg-primary text-white p-2 rounded">
           Mark All as Read
         </button>
-      </div>
+      </motion.div>
       {error && <p className="text-red-500">{error}</p>}
       <div>
         {notifications.map((notification) => (
-          <div key={notification._id} className={`p-4 border rounded mb-4 ${notification.status === 'read' ? 'border-gray-300' : 'border-blue-500'}`}>
+          <div key={notification._id} className={`p-4 border rounded mb-4 ${notification.status === 'read' ? 'border-secondary' : 'border-primary'}`}>
             <p>{notification.message}</p>
-            <p className="text-sm text-gray-500">{new Date(notification.createdAt).toLocaleString()}</p>
+            <p className="text-sm text-darkText">{new Date(notification.createdAt).toLocaleString()}</p>
             <div className="mt-2">
               {notification.status !== 'read' && (
-                <button onClick={() => handleMarkAsRead(notification._id)} className="bg-green-500 text-white p-1 rounded mr-2">Mark as Read</button>
+                <button onClick={() => handleMarkAsRead(notification._id)} className="bg-primary text-white p-1 rounded mr-2">Mark as Read</button>
               )}
-              <button onClick={() => handleDelete(notification._id)} className="bg-red-500 text-white p-1 rounded">Delete</button>
+              <button onClick={() => handleDelete(notification._id)} className="bg-red-600 text-white p-1 rounded">Delete</button>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { motion } from 'framer-motion';
 
 const Goals = () => {
   const [goals, setGoals] = useState<any[]>([]);
@@ -31,27 +32,51 @@ const Goals = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Goals</h1>
-        <Link to="/goals/create" className="bg-blue-500 text-white p-2 rounded">
+        <Link to="/goals/create" className="bg-primary text-white p-2 rounded">
           Create Goal
         </Link>
-      </div>
+      </motion.div>
       {error && <p className="text-red-500">{error}</p>}
-      <div>
-        {goals.map((goal) => (
-          <div key={goal._id} className="p-4 border border-gray-300 rounded mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}>
+        {goals.map((goal, index) => (
+          <motion.div
+            key={goal._id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+            className="p-4 border border-secondary rounded mb-4">
             <h2 className="text-xl font-bold">{goal.title}</h2>
             <p>{goal.description}</p>
             <p><strong>Category:</strong> {goal.category}</p>
             <p><strong>Type:</strong> {goal.type}</p>
             <p><strong>Target:</strong> {goal.targetValue} {goal.unit}</p>
             <p><strong>Deadline:</strong> {new Date(goal.deadline).toLocaleDateString()}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+        <div className="mt-4 flex justify-center space-x-4">
+          <Link to="/goals/stats" className="bg-primary text-white p-2 rounded">
+            View Goal Stats
+          </Link>
+          <Link to="/goals/recommendations" className="bg-primary text-white p-2 rounded">
+            Get Goal Recommendations
+          </Link>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

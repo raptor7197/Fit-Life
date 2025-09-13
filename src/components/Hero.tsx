@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 interface HeroProps {
   onGetStartedClick: () => void;
@@ -48,59 +49,83 @@ const Hero: React.FC<HeroProps> = ({ onGetStartedClick }) => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      id="home" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <div className="animate-fadeInUp">
-                <span className="inline-block px-4 py-2 bg-brand-accent text-brand-dark rounded-full text-sm font-medium mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                <span className="inline-block px-4 py-2 bg-accent text-darkText rounded-full text-sm font-medium mb-4">
                   ✨ Transform Your Life Today
                 </span>
-              </div>
+              </motion.div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight animate-slideLeft">
+              <motion.h1
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-darkText leading-tight">
                 Transform Your
-                <span className="text-brand-light block mt-2">Fitness Journey</span>
-              </h1>
+                <span className="text-primary block mt-2">Fitness Journey</span>
+              </motion.h1>
               
-              <p className="text-lg sm:text-xl text-brand-medium max-w-2xl leading-relaxed animate-fadeInUp">
-                Join thousands who've achieved their fitness goals with personalized workouts, 
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="text-lg sm:text-xl text-primary max-w-2xl leading-relaxed">
+                Join thousands who\'ve achieved their fitness goals with personalized workouts, 
                 nutrition tracking, and expert guidance. Your transformation starts here.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-scaleIn">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={onGetStartedClick}
-                className="bg-brand-dark text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-brand-light transform hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-brand-dark text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary transform hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <span>Start Your Journey</span>
                 <span className="text-2xl">🚀</span>
               </button>
               
-              <button className="border-2 border-brand-light text-brand-dark px-8 py-4 rounded-xl font-semibold text-lg hover:bg-brand-light hover:text-white transform hover:scale-105 transition-all duration-300">
+              <button className="border-2 border-primary text-darkText px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary hover:text-white transform hover:scale-105 transition-all duration-300">
                 Watch Demo
               </button>
-            </div>
+            </motion.div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 animate-fadeInUp">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.5 }}
+              className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-brand-dark">10K+</div>
-                <div className="text-brand-medium text-sm">Active Members</div>
+                <div className="text-2xl sm:text-3xl font-bold text-darkText">10K+</div>
+                <div className="text-primary text-sm">Active Members</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-brand-dark">500+</div>
-                <div className="text-brand-medium text-sm">Workout Plans</div>
+                <div className="text-2xl sm:text-3xl font-bold text-darkText">500+</div>
+                <div className="text-primary text-sm">Workout Plans</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-brand-dark">98%</div>
-                <div className="text-brand-medium text-sm">Success Rate</div>
+                <div className="text-2xl sm:text-3xl font-bold text-darkText">98%</div>
+                <div className="text-primary text-sm">Success Rate</div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Content - Image Carousel */}
@@ -168,17 +193,23 @@ const Hero: React.FC<HeroProps> = ({ onGetStartedClick }) => {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-brand-accent rounded-full flex items-center justify-center animate-float">
+            <motion.div
+              animate={{ y: ["0%", "20%", "0%"] }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "loop" }}
+              className="absolute -top-6 -right-6 w-24 h-24 bg-accent rounded-full flex items-center justify-center">
               <span className="text-2xl">💪</span>
-            </div>
+            </motion.div>
             
-            <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-brand-light rounded-full flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
+            <motion.div
+              animate={{ y: ["0%", "-20%", "0%"] }}
+              transition={{ duration: 4, repeat: Infinity, repeatType: "loop", delay: 2 }}
+              className="absolute -bottom-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center">
               <span className="text-xl text-white">🏃‍♀️</span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

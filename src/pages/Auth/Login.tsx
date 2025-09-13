@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -27,13 +28,26 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 flex justify-center">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4 flex justify-center">
       <div className="w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-6 text-center">Login</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-3xl font-bold mb-6 text-center">Login</motion.h1>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          onSubmit={handleSubmit}
+          className="bg-white rounded-lg shadow-lg px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label className="block text-darkText text-sm font-bold mb-2" htmlFor="email">
               Email
             </label>
             <input
@@ -42,12 +56,12 @@ const Login = () => {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               required
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label className="block text-darkText text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
@@ -56,21 +70,21 @@ const Login = () => {
               id="password"
               value={formData.password}
               onChange={handleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border border-secondary rounded-md w-full py-2 px-3 text-darkText mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
               required
             />
           </div>
           <div className="flex items-center justify-between">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <button type="submit" className="bg-primary hover:bg-darkText text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
               Sign In
             </button>
-            <Link to="/auth/register" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+            <Link to="/auth/register" className="inline-block align-baseline font-bold text-sm text-primary hover:text-darkText">
               Don't have an account?
             </Link>
           </div>
-        </form>
+        </motion.form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

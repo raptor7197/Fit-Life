@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StarIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Testimonials: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -74,77 +75,90 @@ const Testimonials: React.FC = () => {
   const currentReview = testimonials[currentTestimonial];
 
   return (
-    <section id="testimonials" className="py-20 bg-gradient-to-br from-brand-accent via-white to-brand-accent/50">
+    <section id="testimonials" className="py-20 bg-gradient-to-br from-accent via-white to-accent/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-brand-light text-white rounded-full text-sm font-medium mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-16">
+          <div className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-medium mb-4">
             💬 Success Stories
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-darkText mb-6">
             What Our Members
-            <span className="text-brand-light block mt-2">Are Saying</span>
+            <span className="text-primary block mt-2">Are Saying</span>
           </h2>
-          <p className="text-lg text-brand-medium max-w-3xl mx-auto">
-            Join thousands of satisfied members who have transformed their lives with FitLife. 
+          <p className="text-lg text-primary max-w-3xl mx-auto">
+            Join thousands of satisfied members who have transformed their lives with FitLife.
             Here are some of their inspiring success stories.
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Testimonial */}
         <div className="relative max-w-4xl mx-auto mb-16">
-          <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 relative overflow-hidden">
-            
-            {/* Background Pattern */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-light/10 rounded-full -translate-y-16 translate-x-16" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-brand-accent/20 rounded-full translate-y-12 -translate-x-12" />
-            
-            <div className="relative z-10">
-              {/* Rating Stars */}
-              <div className="flex justify-center mb-6">
-                {[...Array(currentReview.rating)].map((_, index) => (
-                  <StarIcon key={index} className="h-6 w-6 text-yellow-400" />
-                ))}
-              </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentTestimonial} // Key changes to trigger animation
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 relative overflow-hidden"
+            >
 
-              {/* Testimonial Text */}
-              <blockquote className="text-lg sm:text-xl text-brand-dark text-center leading-relaxed mb-8 italic">
-                "{currentReview.text}"
-              </blockquote>
+              {/* Background Pattern */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-16 translate-x-16" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/20 rounded-full translate-y-12 -translate-x-12" />
+              
+              <div className="relative z-10">
+                {/* Rating Stars */}
+                <div className="flex justify-center mb-6">
+                  {[...Array(currentReview.rating)].map((_, index) => (
+                    <StarIcon key={index} className="h-6 w-6 text-yellow-400" />
+                  ))}
+                </div>
 
-              {/* User Info */}
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <img
-                  src={currentReview.image}
-                  alt={currentReview.name}
-                  className="w-16 h-16 rounded-full object-cover border-4 border-brand-light"
-                />
-                <div className="text-center sm:text-left">
-                  <h4 className="font-bold text-brand-dark text-lg">{currentReview.name}</h4>
-                  <p className="text-brand-medium">{currentReview.role}</p>
-                  <p className="text-brand-light font-semibold text-sm mt-1">
-                    🏆 {currentReview.achievement}
-                  </p>
+                {/* Testimonial Text */}
+                <blockquote className="text-lg sm:text-xl text-darkText text-center leading-relaxed mb-8 italic">
+                  "{currentReview.text}"
+                </blockquote>
+
+                {/* User Info */}
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                  <img
+                    src={currentReview.image}
+                    alt={currentReview.name}
+                    className="w-16 h-16 rounded-full object-cover border-4 border-primary"
+                  />
+                  <div className="text-center sm:text-left">
+                    <h4 className="font-bold text-darkText text-lg">{currentReview.name}</h4>
+                    <p className="text-primary">{currentReview.role}</p>
+                    <p className="text-primary font-semibold text-sm mt-1">
+                      🏆 {currentReview.achievement}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Navigation Arrows */}
-            <button 
-              onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-brand-light text-white p-3 rounded-full hover:bg-brand-dark transition-colors duration-200 shadow-lg"
-            >
-              <ChevronLeftIcon className="h-5 w-5" />
-            </button>
-            
-            <button 
-              onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-brand-light text-white p-3 rounded-full hover:bg-brand-dark transition-colors duration-200 shadow-lg"
-            >
-              <ChevronRightIcon className="h-5 w-5" />
-            </button>
-          </div>
+              {/* Navigation Arrows */}
+              <button 
+                onClick={prevTestimonial}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-darkText transition-colors duration-200 shadow-lg"
+              >
+                <ChevronLeftIcon className="h-5 w-5" />
+              </button>
+              
+              <button 
+                onClick={nextTestimonial}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-primary text-white p-3 rounded-full hover:bg-darkText transition-colors duration-200 shadow-lg"
+              >
+                <ChevronRightIcon className="h-5 w-5" />
+              </button>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Dots Indicator */}
           <div className="flex justify-center space-x-2 mt-8">
@@ -152,10 +166,9 @@ const Testimonials: React.FC = () => {
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial 
-                    ? 'bg-brand-light scale-125' 
-                    : 'bg-brand-medium/30 hover:bg-brand-medium/60'
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${ index === currentTestimonial 
+                  ? 'bg-primary scale-125' 
+                  : 'bg-primary/30 hover:bg-primary/60'
                 }`}
               />
             ))}
@@ -165,23 +178,23 @@ const Testimonials: React.FC = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-3xl font-bold text-brand-dark mb-2">10,000+</div>
-            <div className="text-brand-medium text-sm">Happy Members</div>
+            <div className="text-3xl font-bold text-darkText mb-2">10,000+</div>
+            <div className="text-primary text-sm">Happy Members</div>
           </div>
           
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-3xl font-bold text-brand-dark mb-2">98%</div>
-            <div className="text-brand-medium text-sm">Success Rate</div>
+            <div className="text-3xl font-bold text-darkText mb-2">98%</div>
+            <div className="text-primary text-sm">Success Rate</div>
           </div>
           
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-3xl font-bold text-brand-dark mb-2">4.9</div>
-            <div className="text-brand-medium text-sm">Average Rating</div>
+            <div className="text-3xl font-bold text-darkText mb-2">4.9</div>
+            <div className="text-primary text-sm">Average Rating</div>
           </div>
           
           <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-3xl font-bold text-brand-dark mb-2">2M+</div>
-            <div className="text-brand-medium text-sm">Workouts Completed</div>
+            <div className="text-3xl font-bold text-darkText mb-2">2M+</div>
+            <div className="text-primary text-sm">Workouts Completed</div>
           </div>
         </div>
       </div>

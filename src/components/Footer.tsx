@@ -5,6 +5,7 @@ import {
   EnvelopeIcon,
   ClockIcon
 } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -34,18 +35,29 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-brand-dark via-brand-medium to-brand-dark text-white">
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="bg-gradient-to-br from-darkText via-primary to-darkText text-white">
       
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
-          {/* Company Info */}
-          <div className="lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="lg:col-span-1">
             <div className="mb-6">
               <h2 className="text-3xl font-bold mb-4">FitLife</h2>
               <p className="text-white/80 leading-relaxed mb-4">
-                Transform your life with personalized fitness solutions. Join thousands who've 
+                Transform your life with personalized fitness solutions. Join thousands who\'ve 
                 achieved their health and fitness goals with our expert guidance and community support.
               </p>
             </div>
@@ -66,10 +78,13 @@ const Footer: React.FC = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}>
             <h3 className="font-semibold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
@@ -93,28 +108,34 @@ const Footer: React.FC = () => {
                 </button>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}>
             <h3 className="font-semibold mb-4 text-lg">Our Services</h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index} className="text-white/80 flex items-center">
-                  <span className="w-2 h-2 bg-brand-accent rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-accent rounded-full mr-3"></span>
                   {service.name}
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}>
             <h3 className="font-semibold mb-4 text-lg">Get in Touch</h3>
             <div className="space-y-4">
               
               <div className="flex items-start space-x-3">
-                <MapPinIcon className="h-5 w-5 text-brand-accent mt-1 flex-shrink-0" />
+                <MapPinIcon className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
                 <div className="text-white/80">
                   <p>123 Fitness Street</p>
                   <p>Health District, NY 10001</p>
@@ -123,7 +144,7 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-3">
-                <PhoneIcon className="h-5 w-5 text-brand-accent flex-shrink-0" />
+                <PhoneIcon className="h-5 w-5 text-accent flex-shrink-0" />
                 <div className="text-white/80">
                   <p>+1 (555) 123-4567</p>
                   <p className="text-sm text-white/60">24/7 Support Available</p>
@@ -131,7 +152,7 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-center space-x-3">
-                <EnvelopeIcon className="h-5 w-5 text-brand-accent flex-shrink-0" />
+                <EnvelopeIcon className="h-5 w-5 text-accent flex-shrink-0" />
                 <div className="text-white/80">
                   <p>support@fitlife.com</p>
                   <p className="text-sm text-white/60">We reply within 24 hours</p>
@@ -139,20 +160,24 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="flex items-start space-x-3">
-                <ClockIcon className="h-5 w-5 text-brand-accent mt-1 flex-shrink-0" />
+                <ClockIcon className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
                 <div className="text-white/80 text-sm">
                   <p><strong>Gym Hours:</strong></p>
                   <p>Mon-Fri: 5:00 AM - 11:00 PM</p>
                   <p>Sat-Sun: 6:00 AM - 10:00 PM</p>
-                  <p className="text-brand-accent mt-1">Online: 24/7 Available</p>
+                  <p className="text-accent mt-1">Online: 24/7 Available</p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-white/20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-12 pt-8 border-t border-white/20">
           <div className="max-w-2xl">
             <h3 className="font-semibold mb-4 text-lg">Stay Updated</h3>
             <p className="text-white/80 mb-4">
@@ -162,18 +187,22 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-brand-accent transition-colors duration-200"
+                className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-accent transition-colors duration-200"
               />
-              <button className="bg-brand-accent text-brand-dark px-6 py-3 rounded-xl font-semibold hover:bg-brand-secondary transform hover:scale-105 transition-all duration-200">
+              <button className="bg-accent text-darkText px-6 py-3 rounded-xl font-semibold hover:bg-secondary transform hover:scale-105 transition-all duration-200">
                 Subscribe
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/20">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.5 }}
+        className="border-t border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white/60 text-sm">
@@ -217,8 +246,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 };
 
